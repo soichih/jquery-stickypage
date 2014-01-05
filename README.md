@@ -16,6 +16,10 @@ jQuery plugin to display a page with chronological sticky tags.
 Just add both jquery-stickpage.css and jquery-stickpage.js, and create a ol/li elements like following.
 
 ```
+
+<link rel="stylesheet" type="text/css" href="http://soichih.github.io/jquery-stickypage/jquery-stickypage.css" media="screen" />
+<script type="text/javascript" src="http://soichih.github.io/jquery-stickypage/jquery-stickypage.js"></script>
+
 <ol id="sticky" class="sticky-page">
 
 <li data-pos="10,10,-3deg">
