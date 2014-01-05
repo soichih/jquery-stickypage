@@ -1,0 +1,57 @@
+.sticky-page {
+position: relative;
+padding: 0px;
+margin: 0px;
+}
+.sticky-page li {
+position: absolute;
+width: 200px;
+height: 150px;
+padding: 10px;
+margin: 5px;
+rotation-point:50% 50%;
+box-shadow: 0 0 5px gray;
+list-style: none;
+
+background: #fefcea; /* Old browsers */
+background: -moz-linear-gradient(top, #fefcea 0%, #f1da36 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefcea), color-stop(100%,#f1da36)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* IE10+ */
+background: linear-gradient(to bottom, #fefcea 0%,#f1da36 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#f1da36',GradientType=0 ); /* IE6-9 */
+}
+.sticky-page li time {
+float: right;
+opacity: 0.7;
+position: absolute;
+bottom: 10px;
+right: 10px;
+}
+
+/*
+.sticky-page li {  
+-moz-transition:-moz-transform .15s linear;  
+-o-transition:-o-transform .15s linear;  
+-webkit-transition:-webkit-transform .15s linear;  
+}  
+*/
+.sticky-page li:hover {
+z-index:5; 
+}
+.sticky-page-scroller {
+display: block;
+width: 100%;
+overflow-y: hidden;
+overflow-x: scroll;
+box-sizing: border-box;
+box-shadow: none;
+background: transparent;
+}
+.sticky-page-scroller-content {
+height: 1px;
+width: 10000px;
+background-color: none;
+}
+
