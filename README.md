@@ -41,7 +41,7 @@ Then initialize the ol element with stickypage().
 ```
 </script>
 (function($) {
-    $("#sticky").stickypage();
+    $("#sticky").stickypage({width: "100%", height: "400px"});
 })(jQuery);
 </script>
 ```
