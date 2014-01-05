@@ -38,10 +38,45 @@
                         // and this.settings
                         // you can add more functions like the one below and
                         // call them like so: this.yourOtherFunction(this.element, this.settings).
-                        console.log("xD");
+
+                        $(this.element).append("<li class='sticky-page-scroller'><div class='sticky-page-scroller-content'/></li>"); 
+                        this.reposition();
+                        var it = this;
+                        $(window).resize(function() {
+                            it.reposition.call(it);
+                        });
+                        $(this.element).find(".sticky-page-scroller").scroll(function(e) {
+                            var size = this.scrollWidth;
+                            var pos = this.scrollLeft;
+                            var r = 1 - pos/size;
+                            var stickies = $(it.element).find("li");
+                            stickies.each(function(i, s) {
+                                if($(s).hasClass("sticky-page-scroller")) return;
+                                var sr = i / (stickies.length-1);
+                                if(sr <= r) {
+                                    $(s).fadeIn("fast");
+                                } else {
+                                    $(s).fadeOut("fast");
+                                }
+                            });
+                        });
                 },
-                yourOtherFunction: function () {
-                        // some logic
+                //bit of responsiveness..
+                reposition: function () {
+                        var it = this;
+                        $(this.element).find("li").each(function(i, s) {
+                            var $s = $(s);
+                            if($s.data("xy")) {
+                                var xy = $s.data("xy").split(",");
+                                var x = xy[0]*it.element.clientWidth/100;
+                                var y = xy[1]*it.element.clientHeight/100;
+                                $s.css("left", x+"px");
+                                $s.css("top", y+"px");
+                            }
+                            if($s.data("r")) {
+                                $s.css("transform", "rotate("+$s.data("r")+") translate3d(0,0,0)");
+                            }
+                        })
                 }
         };
 
