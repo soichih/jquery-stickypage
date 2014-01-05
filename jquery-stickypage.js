@@ -14,7 +14,8 @@
         // Create the defaults once
         var pluginName = "stickypage",
                 defaults = {
-                propertyName: "value"
+                width: "100%",
+                height: "200px"
         };
 
         // The actual plugin constructor
@@ -38,21 +39,26 @@
                         // and this.settings
                         // you can add more functions like the one below and
                         // call them like so: this.yourOtherFunction(this.element, this.settings).
+                        $(this.element).css("height", this.settings.height); 
+                        $(this.element).css("width", this.settings.width); 
 
-                        $(this.element).append("<li class='sticky-page-scroller'><div class='sticky-page-scroller-content'/></li>"); 
+                        var wrapper = $("<div class='sticky-wrapper'/>");
+                        $(this.element).wrap(wrapper);
+                        var p = $(this.element).parent('.sticky-wrapper');
+                        p.append("<div class='sticky-page-scroller'><div class='sticky-page-scroller-content'/></div>"); 
+
                         this.reposition();
                         var it = this;
                         $(window).resize(function() {
                             it.reposition.call(it);
                         });
-                        $(this.element).find(".sticky-page-scroller").scroll(function(e) {
+                        p.find(".sticky-page-scroller").scroll(function(e) {
                             var size = this.scrollWidth;
                             var pos = this.scrollLeft;
                             var r = 1 - pos/size;
                             var stickies = $(it.element).find("li");
                             stickies.each(function(i, s) {
-                                if($(s).hasClass("sticky-page-scroller")) return;
-                                var sr = i / (stickies.length-1);
+                                var sr = i / stickies.length;
                                 if(sr <= r) {
                                     $(s).fadeIn("fast");
                                 } else {
@@ -66,15 +72,14 @@
                         var it = this;
                         $(this.element).find("li").each(function(i, s) {
                             var $s = $(s);
-                            if($s.data("xy")) {
-                                var xy = $s.data("xy").split(",");
+                            if($s.data("pos")) {
+                                var xy = $s.data("pos").split(",");
                                 var x = xy[0]*it.element.clientWidth/100;
                                 var y = xy[1]*it.element.clientHeight/100;
+                                var r = xy[2];
                                 $s.css("left", x+"px");
                                 $s.css("top", y+"px");
-                            }
-                            if($s.data("r")) {
-                                $s.css("transform", "rotate("+$s.data("r")+") translate3d(0,0,0)");
+                                $s.css("transform", "rotate("+r+") translate3d(0,0,0)");
                             }
                         })
                 }
