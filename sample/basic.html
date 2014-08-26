@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../jquery-stickypage.css" media="screen" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../jquery-stickypage.js"></script>
+<style>
+#sticky {
+width: 40em;
+height: 30em;
+background-color: #efd;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>jquery-stickpage demo</h1>
+    <ol id="sticky" class="sticky-page">
+        <li data-pos="10,10,-3deg">
+        Happy New Year!
+        <time>1/4/2014</time>
+        </li>
+
+        <li data-pos="20,25,2deg">
+        Just published <a href="/whiteboard">whiteboard</a> app running on my node server on OpenShift. Check it out!
+        <time>1/3/2014</time>
+        </li>
+
+        <li data-pos="60,25,2deg">
+        I've created a jQuery plugin called <a href="https://github.com/soichih/jquery-stickypage" target="_blank">stickypage</a> for this page
+        <time>1/4/2014</time>
+        </li>
+    </ol>
+</div> <!--container-->
+
+<script>
+$(function() {
+    $("#sticky").stickypage();
+});
+</script>
+
+</body>
+</html>

@@ -20,6 +20,14 @@ Just add both jquery-stickpage.css and jquery-stickpage.js, and create a ol/li e
 <link rel="stylesheet" type="text/css" href="http://soichih.github.io/jquery-stickypage/jquery-stickypage.css" media="screen" />
 <script type="text/javascript" src="http://soichih.github.io/jquery-stickypage/jquery-stickypage.js"></script>
 
+<style>
+#sticky {
+    width: 40em;
+    height: 30em;
+    background-color: #efd;
+}
+</style>
+
 <ol id="sticky" class="sticky-page">
 
 <li data-pos="10,10,-3deg">
@@ -43,12 +51,14 @@ I've created a jQuery plugin called <a href="https://github.com/soichih/jquery-s
 Then initialize the ol element with stickypage().
 
 ```
-</script>
-(function($) {
-    $("#sticky").stickypage({width: "100%", height: "400px"});
-})(jQuery);
+<script>
+$(function() {
+    $("#sticky").stickypage();
+});
 </script>
 ```
+
+See /sample for more detail!
 
 Enjoy!
 

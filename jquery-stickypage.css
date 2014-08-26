@@ -54,4 +54,7 @@ height: 1px;
 width: 10000px;
 background-color: none;
 }
-
+.sticky-page-scroller {
+position: absolute;
+bottom: 0px;
+}
